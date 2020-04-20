@@ -1,0 +1,57 @@
+%! Package = mlulisting
+%! Author = Fachschaftsrat Mathematik/Informatik der Studierendenschaft der Martin-Luther-Universität Halle-Wittenberg
+%! Date = 2020/04/20
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mlulisting}[2020/04/20 v1.0]
+
+\RequirePackage{listings}
+\RequirePackage{listingsutf8} % UTF8 support in included listings.
+
+% Colors:
+\definecolor{lsnumber}{rgb}{0,0,0} % Zeilennummerfarbe
+\definecolor{lscomment}{rgb}{0.25,0.5,0.35} % Kommentarfarbe
+\definecolor{lskeyword}{rgb}{0.5,0,0.35} % Schlüsselwörterfarbe
+\definecolor{lsstring}{rgb}{0.6,0,0} % Zeichenkettenfarbe
+
+% Default code style:
+\lstset{
+    language=C,
+    basicstyle=\ttfamily,
+    breakatwhitespace=false,
+    breaklines=true,
+    prebreak={\mbox{\(\hookleftarrow\)}},
+    numbers=left,
+    numberstyle=\color{lsnumber}\tiny,
+    numbersep=0.5em,
+    stepnumber=1,
+    commentstyle=\color{lscomment},
+    morecomment=[s][\color{lscomment}]{/**}{*/},
+    keepspaces=true,
+    keywordstyle=\bfseries\color{lskeyword},
+    stringstyle=\color{lsstring},
+    showtabs=false, showspaces=false,
+    showstringspaces=false,
+    tabsize=2,
+}
+
+% Haskell code style ("Konzepte der Programmierung" lecture):
+\lstdefinestyle{haskell}{
+    language=haskell,
+    escapeinside={*'}{'*},
+    showstringspaces=false,
+    morecomment=[l]\%,
+    captionpos=b,
+    emphstyle={\bfseries},
+}
+
+% Prof. Molitor's assembler code style ("Einführung in Rechnerarchitektur" lecture):
+\lstdefinestyle{massembler}{
+    language=[x86masm]Assembler,
+    morekeywords={
+        ldd, sto, shl, shr, rol, ror, sub, add, shli,
+        shri, roli, rori, subi, addi, or, and, xor,
+        xnor, jmp, beq, bneq, bgt, bo, ldpc, stpc
+    },
+    comment=[l]{\#},
+}
